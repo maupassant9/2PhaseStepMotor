@@ -1,0 +1,186 @@
+
+Map of Debug\stepmotor.sm8 from link file Debug\stepmotor.lkf - Thu Sep  3 18:26:36 2020
+
+
+                               --------
+                               Segments
+                               --------
+
+start 00008080 end 00008084 length     4 segment .const
+start 00008087 end 00008259 length   466 segment .text
+start 00004000 end 00004000 length     0 segment .eeprom
+start 00000000 end 00000000 length     0 segment .bsct
+start 00000000 end 0000000a length    10 segment .ubsct
+start 0000000a end 0000000a length     0 segment .bit
+start 0000000a end 0000000a length     0 segment .share
+start 00000100 end 00000100 length     0 segment .data
+start 00000100 end 00000105 length     5 segment .bss
+start 00000000 end 00000346 length   838 segment .info.
+start 00000000 end 00000fdc length  4060 segment .debug
+start 00008000 end 00008080 length   128 segment .const
+start 00008084 end 00008087 length     3 segment .init
+
+
+                               -------
+                               Modules
+                               -------
+
+C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8:
+start 00008087 end 000080d7 length    80 section .text
+start 00000100 end 00000100 length     0 section .bss
+start 00000000 end 00000000 length     0 section .ubsct
+start 00000000 end 00000034 length    52 section .info.
+
+Debug\stm8s_gpio.o:
+start ******** end ******** length     0 section .text *** removed ***
+start 00000000 end 00000a06 length  2566 section .debug
+start 00000034 end 000000a4 length   112 section .info.
+
+Debug\main.o:
+start 000080d7 end 0000810d length    54 section .text
+start 00000a06 end 00000b02 length   252 section .debug
+start 000000a4 end 0000010e length   106 section .info.
+start 00008080 end 00008084 length     4 section .const
+
+Debug\motor.o:
+start 0000810d end 00008216 length   265 section .text
+start 00000100 end 00000105 length     5 section .bss
+start 00000b02 end 00000e71 length   879 section .debug
+start 0000010e end 00000179 length   107 section .info.
+
+(C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o:
+start 00008216 end 00008236 length    32 section .text
+start 00000179 end 000001a8 length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o:
+start 00008236 end 00008246 length    16 section .text
+start 000001a8 end 000001d8 length    48 section .info.
+
+(C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lreg.o:
+start 00000000 end 00000004 length     4 section .ubsct
+start 000001d8 end 00000207 length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o:
+start 00008246 end 00008258 length    18 section .text
+start 00000207 end 00000236 length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)xreg.o:
+start 00000004 end 00000007 length     3 section .ubsct
+start 00000236 end 00000265 length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)yreg.o:
+start 00000007 end 0000000a length     3 section .ubsct
+start 00000265 end 00000294 length    47 section .info.
+
+Debug\stm8_interrupt_vector.o:
+start 00008258 end 00008259 length     1 section .text
+start 00000e71 end 00000fdc length   363 section .debug
+start 00000294 end 0000030f length   123 section .info.
+start 00008000 end 00008080 length   128 section .const
+
+
+                             -----------
+                             Stack usage
+                             -----------
+
+Debug\main.o:
+_dly                        8   (6)
+_main                  >   10   (2)
+
+Debug\motor.o:
+L11_MotorGpioInit      >    2   (2)
+L7_MotorApplyState          2   (2)
+_MotorInit                  5   (2)
+_MotorNextState             4   (2)
+_MotorRotateDirection       3   (3)
+
+Debug\stm8_interrupt_vector.o:
+f_NonHandledInterrupt  >    6   (6)
+
+Stack size: 16
+
+
+                              ---------
+                              Call tree
+                              ---------
+   1 > L11_MotorGpioInit: (2)
+
+   2 > __stext: (0)
+
+   3 > _main: (2)
+   4      + _MotorInit: (2)
+   5      |    + _MotorRotateDirection: (3)
+          | 
+   6      + _MotorNextState: (2)
+   7      |    + L7_MotorApplyState: (2)
+          | 
+   8      + _MotorRotateDirection --> 5
+   9      + _dly: (6)
+       
+  10 > f_NonHandledInterrupt: (6)
+
+  11   L7_MotorApplyState --> 7
+
+  12   _MotorInit --> 4
+
+  13   _MotorNextState --> 6
+
+  14   _MotorRotateDirection --> 5
+
+  15   _dly --> 9
+
+
+
+                               -------
+                               Symbols
+                               -------
+
+_GPIO_DeInit                 ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_ExternalPullUpConfig   ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_Init                   ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_ReadInputData          ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_ReadInputPin           ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_ReadOutputData         ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_Write                  ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_WriteHigh              ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_WriteLow               ********   *** removed from Debug\stm8s_gpio.o ***
+_GPIO_WriteReverse           ********   *** removed from Debug\stm8s_gpio.o ***
+_MotorInit                   0000810d   defined in Debug\motor.o section .text
+                                        used in Debug\main.o
+_MotorNextState              00008156   defined in Debug\motor.o section .text
+                                        used in Debug\main.o
+_MotorRotateDirection        00008115   defined in Debug\motor.o section .text
+                                        used in Debug\main.o
+__endmem                     000001ff   defined in command file
+                                        *** not used ***
+__endzp                      0000000a   defined in command file section .ubsct
+                                        used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
+__idesc__                    00008084   defined in linker section .init
+                                        used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
+__memory                     00000105   defined in command file section .bss
+                                        used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
+__stack                      000003ff   defined in command file
+                                        used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
+__startmem                   00000105   defined in command file section .bss
+                                        *** not used ***
+__stext                      00008087   defined in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8 section .text
+                                        used in Debug\stm8_interrupt_vector.o
+__vectab                     00008000   defined in Debug\stm8_interrupt_vector.o section .const
+_dly                         000080e6   defined in Debug\main.o section .text
+_exit                        000080d5   defined in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8 section .text
+_main                        000080d7   defined in Debug\main.o section .text
+                                        used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
+c_lcmp                       00008216   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o section .text
+                                        used in Debug\main.o
+c_lgadc                      00008236   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o section .text
+                                        used in Debug\main.o
+c_lreg                       00000000   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lreg.o section .ubsct
+                                        used in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o
+                                                (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o
+c_ltor                       00008246   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o section .text
+                                        used in Debug\main.o
+c_x                          00000004   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)xreg.o section .ubsct
+                                        used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
+c_y                          00000007   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)yreg.o section .ubsct
+                                        used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
+f_NonHandledInterrupt        00008258   defined in Debug\stm8_interrupt_vector.o section .text
