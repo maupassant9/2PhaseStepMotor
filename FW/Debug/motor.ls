@@ -22,10 +22,10 @@
  136  000b 2612          	jrne	L16
  137                     ; 88 		orders[0] = MOTOR_LOOPA_POS;
  139  000d 35010001      	mov	L3_orders,#1
- 140                     ; 89 		orders[1] = MOTOR_LOOPA_NEG;
- 142  0011 35020002      	mov	L3_orders+1,#2
- 143                     ; 90 		orders[2] = MOTOR_LOOPB_POS;
- 145  0015 35030003      	mov	L3_orders+2,#3
+ 140                     ; 89 		orders[1] = MOTOR_LOOPB_POS;
+ 142  0011 35030002      	mov	L3_orders+1,#3
+ 143                     ; 90 		orders[2] = MOTOR_LOOPA_NEG;
+ 145  0015 35020003      	mov	L3_orders+2,#2
  146                     ; 91 		orders[3] = MOTOR_LOOPB_NEG;
  148  0019 35040004      	mov	L3_orders+3,#4
  150  001d 2028          	jra	L36
@@ -34,14 +34,14 @@
  154  001f 7b01          	ld	a,(OFST+1,sp)
  155  0021 a102          	cp	a,#2
  156  0023 2612          	jrne	L56
- 157                     ; 93 		orders[0] = MOTOR_LOOPA_NEG;
- 159  0025 35020001      	mov	L3_orders,#2
+ 157                     ; 93 		orders[0] = MOTOR_LOOPB_POS;
+ 159  0025 35030001      	mov	L3_orders,#3
  160                     ; 94 		orders[1] = MOTOR_LOOPA_POS;
  162  0029 35010002      	mov	L3_orders+1,#1
  163                     ; 95 		orders[2] = MOTOR_LOOPB_NEG;
  165  002d 35040003      	mov	L3_orders+2,#4
- 166                     ; 96 		orders[3] = MOTOR_LOOPB_POS;
- 168  0031 35030004      	mov	L3_orders+3,#3
+ 166                     ; 96 		orders[3] = MOTOR_LOOPA_NEG;
+ 168  0031 35020004      	mov	L3_orders+3,#2
  170  0035 2010          	jra	L36
  171  0037               L56:
  172                     ; 98 		orders[0] = MOTOR_LOOP_OFF;

@@ -86,14 +86,14 @@ void MotorInit(void)
 void MotorRotateDirection(enum rotate_t direction){
 	if(ROTATE_CLK == direction){
 		orders[0] = MOTOR_LOOPA_POS;
-		orders[1] = MOTOR_LOOPA_NEG;
-		orders[2] = MOTOR_LOOPB_POS;
+		orders[1] = MOTOR_LOOPB_POS;
+		orders[2] = MOTOR_LOOPA_NEG;
 		orders[3] = MOTOR_LOOPB_NEG;
 	} else if (ROTATE_CLKWISE == direction){
-		orders[0] = MOTOR_LOOPA_NEG;
+		orders[0] = MOTOR_LOOPB_POS;
 		orders[1] = MOTOR_LOOPA_POS;
 		orders[2] = MOTOR_LOOPB_NEG;
-		orders[3] = MOTOR_LOOPB_POS;
+		orders[3] = MOTOR_LOOPA_NEG;
 	} else {
 		orders[0] = MOTOR_LOOP_OFF;
 		orders[1] = MOTOR_LOOP_OFF;

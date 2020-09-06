@@ -1,0 +1,175 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.3 (32 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***                      Transient Analysis of HBridge                       ***
+***                           9/4/2020 12:21:05 PM                           ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           10
+Output Start Time (tstart) 0
+Maximum Time Step          0
+Number of Points           51
+Temperature                Linear 27
+Retrace Runs               1
+Run Options                Normal
+State Variables            Zero
+Operating Point            On
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      Off
+Ignore Expression Errors   Off
+
+
+*****************************************************
+***                Temperature=27                 ***
+*****************************************************
+
+Temperature=27
+
+DC Operating Point Voltages
+===========================
+Node         Voltage  Node         Voltage  Node         Voltage 
+1             3.300   2             3.300   3             2.455  
+4             2.391   5           843.260m  6             3.300  
+7             2.455  
+
+DC Operating Point Inductor Current
+===================================
+Inductor     Current 
+L1          320.327m 
+
+
+Operating Point for Devices of Type Diode
+=========================================
+Instance:               D1            D2
+Using model:        1N4148        1N4148
+
+Capacitance Terms:
+CAP                 1.245p        1.301p
+
+Current Terms:
+ID                 -8.682n       -8.241n
+
+Resistance Terms:
+REQ                 3.509G        3.508G
+
+Voltage Terms:
+VD                 -2.391      -844.764m
+
+Power DC Terms:
+PD                 20.759n        6.961n
+PS                  0.000         0.000 
+
+DC Pin Currents:
+Id                 -8.682n       -8.241n
+
+Condition:
+State                  OFF           OFF
+
+Device Variables:
+area                1.000         1.000 
+ic                  0.000         0.000 
+
+
+
+Operating Point for Devices of Type Bipolar Junction Transistors NPN
+====================================================================
+Instance:               Q1            Q2
+Using model:        SS9013        SS9013
+
+Beta Terms:
+BETADC            126.956       130.387 
+BETAAC            104.085       107.132 
+
+Capacitance Terms:
+CPI                61.472p       61.452p
+CMU                 6.929p        3.854p
+CBX                13.674p        7.272p
+CJS                 0.000         0.000 
+
+Conductance Terms:
+GM                 10.074        10.176 
+
+Current Terms:
+IB                  2.503m        2.457m
+IC                317.824m      320.327m
+
+Resistance Terms:
+RPI                10.332        10.528 
+RX                 23.572        23.585 
+RO                206.229       209.443 
+
+Voltage Terms:
+VBE               844.764m      843.260m
+VBC                -2.503n       -1.548 
+VCE               844.764m        2.391 
+
+Frequency Terms:
+FT                 19.536G       22.315G
+
+Power DC Terms:
+PD                270.601m      768.028m
+PS                  0.000         0.000 
+
+DC Pin Currents:
+Ib                  2.503m        2.457m
+Ic                317.824m      320.327m
+Ie               -320.327m     -322.784m
+Is                  0.000         0.000 
+
+Condition:
+State                  HOT           HOT
+
+Device Variables:
+area                1.000         1.000 
+vbe                 0.000         0.000 
+vce                 0.000         0.000 
+
+
+
+Operating Point for Devices of Type Resistor
+============================================
+Instance:                R1            R2            R3
+V                   -2.503n       -2.457        64.065m
+Power DC Terms:
+PD                   6.267p        6.036m       20.522m
+
+DC Pin Currents:
+Ir                  -2.503m       -2.457m      320.327m
+
+Device Variables:
+tc1                  0.000         0.000         0.000 
+tc2                  0.000         0.000         0.000 
+
+
+
+Operating Point for Devices of Type Inductor
+============================================
+Instance:                L1
+V                    0.000 
+Power DC Terms:
+PS                   0.000 
+
+DC Pin Currents:
+Il                 320.327m
+
+Device Variables:
+ic                   0.000 
+
+
+
+Operating Point for Devices of Type SPICE Source
+================================================
+Instance:               V1            V2
+V                   3.300         3.300 
+Power DC Terms:
+PG                 16.368m        1.049 
+
+DC Pin Currents:
+ISource            -4.960m     -317.824m
+
+
