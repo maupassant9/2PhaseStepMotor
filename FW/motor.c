@@ -23,15 +23,18 @@
 ********************************************/
 
 
-// MOTOR_LOOP[X]_[XXX]:
-// [X]: loop A or loop B
-// [XXX]: Positive current or Negative current
+// MOTOR_PHASE_1 -- 4
+//            A  B  C  D
+//  PHASE_1:  1  0  0  1
+//  PHASE_2:  1  0  1  0
+//  PHASE_3:  0  1  1  0
+//  PHASE_4:  0  1  0  1
 enum motor_state_t{
 	MOTOR_LOOP_OFF = 0,
-	MOTOR_LOOPA_POS,
-	MOTOR_LOOPA_NEG,
-	MOTOR_LOOPB_POS,
-	MOTOR_LOOPB_NEG
+	MOTOR_PHASE_1,
+	MOTOR_PHASE_2,
+	MOTOR_PHASE_3,
+	MOTOR_PHASE_4
 };
 /********************************************
 * External Variables 
@@ -67,6 +70,7 @@ void MotorInit(void)
 {
 	uint8_t cnt;
 	
+	MotorGpioInit();
 	//init the state of motor
 	MotorRotateDirection(ROTATE_STOP);
 	order_cnter = 0;
@@ -85,15 +89,15 @@ void MotorInit(void)
 *----------------------------------------------*/
 void MotorRotateDirection(enum rotate_t direction){
 	if(ROTATE_CLK == direction){
-		orders[0] = MOTOR_LOOPA_POS;
-		orders[1] = MOTOR_LOOPB_POS;
-		orders[2] = MOTOR_LOOPA_NEG;
-		orders[3] = MOTOR_LOOPB_NEG;
+		orders[0] = MOTOR_PHASE_1;
+		orders[1] = MOTOR_PHASE_2;
+		orders[2] = MOTOR_PHASE_3;
+		orders[3] = MOTOR_PHASE_4;
 	} else if (ROTATE_CLKWISE == direction){
-		orders[0] = MOTOR_LOOPB_POS;
-		orders[1] = MOTOR_LOOPA_POS;
-		orders[2] = MOTOR_LOOPB_NEG;
-		orders[3] = MOTOR_LOOPA_NEG;
+		orders[0] = MOTOR_PHASE_4;
+		orders[1] = MOTOR_PHASE_3;
+		orders[2] = MOTOR_PHASE_2;
+		orders[3] = MOTOR_PHASE_1;
 	} else {
 		orders[0] = MOTOR_LOOP_OFF;
 		orders[1] = MOTOR_LOOP_OFF;
@@ -140,29 +144,30 @@ static void MotorApplyState(enum motor_state_t state)
 {
 	//switch to next state
 	switch(state){
-		case MOTOR_LOOPA_POS: 
+		case MOTOR_PHASE_1: 
 												 PINC_PORT->ODR &= ~PINC_PIN;
-												 PIND_PORT->ODR &= ~PIND_PIN;
 												 PINB_PORT->ODR &= ~PINB_PIN;
-												 PINA_PORT->ODR |= PINA_PIN;	
+												 PINA_PORT->ODR |= PINA_PIN;
+												 PIND_PORT->ODR |= PIND_PIN;
 												 break;
-		case MOTOR_LOOPA_NEG: 
-												 PINC_PORT->ODR &= ~PINC_PIN;
+		case MOTOR_PHASE_2: 
+												 PINB_PORT->ODR &= ~PINB_PIN;	
 												 PIND_PORT->ODR &= ~PIND_PIN;
-												 PINA_PORT->ODR &= ~PINA_PIN;
-												 PINB_PORT->ODR |= PINB_PIN;	
+												 PINA_PORT->ODR |= PINA_PIN;
+												 PINC_PORT->ODR |= PINC_PIN;
+												 
 												 break;
-		case MOTOR_LOOPB_POS:
+		case MOTOR_PHASE_3:
 												 PINA_PORT->ODR &= ~PINA_PIN;
-												 PINB_PORT->ODR &= ~PINB_PIN;		
 												 PIND_PORT->ODR &= ~PIND_PIN;
+												 PINB_PORT->ODR |= PINB_PIN;		
 												 PINC_PORT->ODR |= PINC_PIN;	
 												 break;												 
-		case MOTOR_LOOPB_NEG:
-												 PINA_PORT->ODR &= ~PINA_PIN;
-												 PINB_PORT->ODR &= ~PINB_PIN;		
+		case MOTOR_PHASE_4:
+												 PINA_PORT->ODR &= ~PINA_PIN;	
 												 PINC_PORT->ODR &= ~PINC_PIN;
 												 PIND_PORT->ODR |= PIND_PIN;	
+												 PINB_PORT->ODR |= PINB_PIN;	
 												 break;
 		default:
 						 PINA_PORT->ODR &= ~PINA_PIN;

@@ -65,3 +65,7 @@ data=50410300000002000000010000000200000001010A70723A3A50445F4F44520200000002000
 xml_checksum=198
 [DebugState_v1-Debug.AddOn.SteppingMode]
 Mode=hardware
+[DebugState_v1-Debug.AddOn.St7McuIcdConf]
+McuName=STM8S003F3
+[DebugState_v1-Debug.AddOn.IcdBreak]
+ICDBreak0=CR:0x00000000,BK1:0x00000000,BK2:0x00000000

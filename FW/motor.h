@@ -29,13 +29,13 @@
 #define PINA_PIN 0x80
 
 #define PINB_PORT GPIOD
-#define PINB_PIN 0x01
+#define PINB_PIN 0x02
 
 #define PINC_PORT GPIOD
-#define PINC_PIN 0x02
+#define PINC_PIN 0x04
 
 #define PIND_PORT GPIOD
-#define PIND_PIN 0x04
+#define PIND_PIN 0x08
 
 /********************************************
 * Type definition 
